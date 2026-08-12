@@ -2,26 +2,26 @@
 // Leaflet, canvas). Mirrors the :root tokens in client/src/index.css, which
 // remain the single source of truth for everything CSS can reach.
 //
-// #20BAD1 on #FFFFFF is only 2.33:1, so BRAND.teal is for fills and non-text
-// marks only; BRAND.tealInk (#157B8A, 4.96:1 on white) is the legible variant.
+// Minimalist black & white system — every value is a shade of gray or true
+// black/white. `ink` is the near-black used for text and solid fills; on
+// dark (ink) surfaces it flips to white. There is no colored accent.
 export const BRAND = {
-  teal: "#20BAD1",
-  tealInk: "#157B8A",
-  tealDim: "#10606C",
-  navy: "#061A3A",
-  charcoal: "#222222",
-  tint: "#EFF7F8",
-  tintDeep: "#D6F0F3",
+  teal: "#1D1D1F",
+  tealInk: "#1D1D1F",
+  tealDim: "#000000",
+  navy: "#1D1D1F",
+  charcoal: "#1D1D1F",
+  tint: "#F5F5F7",
+  tintDeep: "#E8E8ED",
   white: "#FFFFFF",
-  ink2: "#44536B",
-  ink3: "#5D6A7F",
-  border: "#C7EEF4",
-  borderSoft: "#E0F5F9",
+  ink2: "#6E6E73",
+  ink3: "#86868B",
+  border: "#D2D2D7",
+  borderSoft: "#E8E8ED",
 } as const;
 
-// Generic chart sequence: brand teal, deep navy, then teal mixed toward
-// white at 60% (#A6E3ED) and 30% (#63CFDF). Charts that encode risk use the
-// severity scale in ./severity instead.
-export const CHART_SERIES = [BRAND.teal, BRAND.navy, "#A6E3ED", "#63CFDF"] as const;
-export const CHART_GRID = BRAND.tintDeep;
+// Generic chart sequence: ink stepped toward white in even gray increments.
+// Charts that encode risk use the severity scale in ./severity instead.
+export const CHART_SERIES = [BRAND.navy, "#6E6E73", "#AEAEB2", "#D2D2D7"] as const;
+export const CHART_GRID = "#E8E8ED";
 export const CHART_AXIS = BRAND.ink2;

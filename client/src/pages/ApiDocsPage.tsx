@@ -14,8 +14,8 @@ interface Endpoint {
 }
 
 const METHOD_STYLES = {
-  GET:  { bg: "#EFF7F8", color: "#222222", border: "#A6E3ED" },
-  POST: { bg: "#EFF7F8", color: "#5D6A7F", border: "#A6E3ED" },
+  GET:  { bg: "#F5F5F7", color: "#1D1D1F", border: "#AEAEB2" },
+  POST: { bg: "#F5F5F7", color: "#86868B", border: "#AEAEB2" },
 };
 
 const ENDPOINTS: Endpoint[] = [
@@ -140,26 +140,26 @@ function EndpointCard({ ep }: { ep: Endpoint }) {
   return (
     <div
       data-testid={`api-endpoint-${ep.method.toLowerCase()}-${ep.path.replace(/\//g, "-").replace(/:/g, "")}`}
-      className="bg-[#FFFFFF] border border-[#C7EEF4] rounded-md overflow-hidden"
+      className="bg-[#FFFFFF] border border-[#D2D2D7] rounded-md overflow-hidden"
     >
       {/* Header */}
-      <div className="flex items-center gap-3 px-4 py-3 border-b border-[#C7EEF4] bg-[#FFFFFF]">
+      <div className="flex items-center gap-3 px-4 py-3 border-b border-[#D2D2D7] bg-[#FFFFFF]">
         <span
           className="px-2 py-0.5 rounded text-[10px] font-bold tracking-wider font-mono shrink-0"
           style={{ background: mStyle.bg, color: mStyle.color, border: `1px solid ${mStyle.border}` }}
         >
           {ep.method}
         </span>
-        <code className="text-[12px] font-mono text-[#061A3A] font-medium">{ep.path}</code>
+        <code className="text-[12px] font-mono text-[#1D1D1F] font-medium">{ep.path}</code>
       </div>
 
       <div className="p-4 space-y-3">
-        <p className="text-[11px] text-[#222222] leading-relaxed">{ep.description}</p>
+        <p className="text-[11px] text-[#1D1D1F] leading-relaxed">{ep.description}</p>
 
         {ep.body && (
           <div>
             <div className="section-label mb-1.5">Request Body</div>
-            <pre className="text-[10px] sm:text-[11px] font-mono bg-[#FFFFFF] border border-[#C7EEF4] rounded p-3 overflow-x-auto text-[#222222] leading-relaxed">
+            <pre className="text-[10px] sm:text-[11px] font-mono bg-[#FFFFFF] border border-[#D2D2D7] rounded p-3 overflow-x-auto text-[#1D1D1F] leading-relaxed">
               <code>{ep.body}</code>
             </pre>
           </div>
@@ -167,7 +167,7 @@ function EndpointCard({ ep }: { ep: Endpoint }) {
 
         <div>
           <div className="section-label mb-1.5">Example Response</div>
-          <pre className="text-[10px] sm:text-[11px] font-mono bg-[#FFFFFF] border border-[#C7EEF4] rounded p-3 overflow-x-auto leading-relaxed"
+          <pre className="text-[10px] sm:text-[11px] font-mono bg-[#FFFFFF] border border-[#D2D2D7] rounded p-3 overflow-x-auto leading-relaxed"
             style={{ color: ACCENT }}>
             <code>{ep.example}</code>
           </pre>
@@ -183,16 +183,16 @@ export default function ApiDocsPage() {
         <main className="flex-1 p-3 md:p-5 space-y-5">
 
           {/* Intro */}
-          <div className="bg-[#FFFFFF] border border-[#C7EEF4] rounded-md p-4">
+          <div className="bg-[#FFFFFF] border border-[#D2D2D7] rounded-md p-4">
             <div className="flex items-center gap-2 mb-2">
               <Code2 size={14} style={{ color: ACCENT }} />
-              <div className="text-[11px] font-semibold text-[#061A3A]">Overview</div>
+              <div className="text-[11px] font-semibold text-[#1D1D1F]">Overview</div>
             </div>
-            <p className="text-[11px] text-[#222222] leading-relaxed mb-2">
+            <p className="text-[11px] text-[#1D1D1F] leading-relaxed mb-2">
               This API provides public access to Seattle rideshare safety incident data. All endpoints return JSON. No authentication is required for read operations.
             </p>
-            <div className="flex items-center gap-3 text-[10px] text-[#44536B]">
-              <span>Base URL: <code className="font-mono text-[#061A3A] bg-[#FFFFFF] px-1.5 py-0.5 rounded">https://safetysteward.bullecloud.com</code></span>
+            <div className="flex items-center gap-3 text-[10px] text-[#6E6E73]">
+              <span>Base URL: <code className="font-mono text-[#1D1D1F] bg-[#FFFFFF] px-1.5 py-0.5 rounded">https://safetysteward.bullecloud.com</code></span>
             </div>
             <div
               className="mt-2 rounded border px-2.5 py-2 text-[10px] leading-relaxed"
@@ -210,11 +210,11 @@ export default function ApiDocsPage() {
               site root. See <code className="font-mono">DEPLOYMENT.md</code> for what has to be
               provisioned.
             </div>
-            <div className="mt-3 p-3 rounded border border-[#C7EEF4] bg-[#FFFFFF]">
-              <div className="text-[9px] text-[#44536B] leading-relaxed">
+            <div className="mt-3 p-3 rounded border border-[#D2D2D7] bg-[#FFFFFF]">
+              <div className="text-[9px] text-[#6E6E73] leading-relaxed">
                 <span className="font-medium" style={{ color: ACCENT }}>Research Citation:</span>{" "}
                 This API is free for research and advocacy use. Please cite{" "}
-                <em className="text-[#061A3A]">"App-Based Driver Safety Steward by Bulle Cloud"</em>{" "}
+                <em className="text-[#1D1D1F]">"App-Based Driver Safety Steward by Bulle Cloud"</em>{" "}
                 in publications.
               </div>
             </div>
@@ -222,7 +222,7 @@ export default function ApiDocsPage() {
 
           {/* Method legend */}
           <div className="flex items-center gap-4 text-[10px]">
-            <span className="text-[#44536B] font-medium">Method:</span>
+            <span className="text-[#6E6E73] font-medium">Method:</span>
             {(["GET", "POST"] as const).map(m => {
               const s = METHOD_STYLES[m];
               return (
@@ -231,7 +231,7 @@ export default function ApiDocsPage() {
                     style={{ background: s.bg, color: s.color, border: `1px solid ${s.border}` }}>
                     {m}
                   </span>
-                  <span className="text-[#44536B]">{m === "GET" ? "Read" : "Write"}</span>
+                  <span className="text-[#6E6E73]">{m === "GET" ? "Read" : "Write"}</span>
                 </span>
               );
             })}
@@ -242,7 +242,7 @@ export default function ApiDocsPage() {
             {ENDPOINTS.map((ep, i) => <EndpointCard key={i} ep={ep} />)}
           </div>
 
-          <div className="text-[9px] text-[#44536B] pb-2">
+          <div className="text-[9px] text-[#6E6E73] pb-2">
             bullecloud.com · API subject to change. Subscribe to updates at laborstandards@seattle.gov.
           </div>
         </main>

@@ -7,7 +7,7 @@
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 <meta name="description" content="Bulle Cloud Safety Steward — real-time incident intelligence and worker rights for Seattle app-based drivers." />
-<meta name="theme-color" content="#061A3A" />
+<meta name="theme-color" content="#1D1D1F" />
 <meta name="color-scheme" content="dark" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -24,78 +24,71 @@
      ============================================================ */
 
   :root {
-    /* === BULLE CONSULTING BRAND PALETTE ===
-       Brand teal   #20BAD1  interactive emphasis
-       Deep navy    #061A3A  headings, nav chrome, data labels
-       Charcoal     #222222  body text and table content
-       Teal tint    #EFF7F8  section/card backgrounds, alternating rows, hover
-       White        #FFFFFF  page canvas, surfaces on tinted sections
+    /* === BULLE CLOUD · SAFETY STEWARD — MONOCHROME DESIGN SYSTEM ===
+       White canvas · near-black chrome · grayscale accents throughout.
+       Apple.com-style: no hue, only value. Every state is still carried by
+       an icon, label, or weight change — never by color alone.
 
-       Contrast note that governs the whole file: #20BAD1 on #FFFFFF is only
-       2.33:1, so brand teal can never carry or be text on a light surface.
-       Two teal tokens therefore exist — `--accent-solid` is the exact brand
-       teal, used only for fills, and `--accent` is a same-hue darker shade
-       (#157B8A, 4.96:1 on white) used wherever teal must be legible as text.
-       On the navy chrome that split is unnecessary: teal scores 7.40:1 there,
-       so the `.sidebar`/`.app-header` block below re-points `--accent` at the
-       full brand teal. */
+       Ink        #1D1D1F  headings, nav chrome, primary emphasis
+       Charcoal    #48484A  body text, secondary emphasis
+       Gray tint   #F5F5F7  section/card backgrounds, alternating rows, hover
+       White       #FFFFFF  page canvas, surfaces on tinted sections */
 
     /* === SURFACES === */
     --bg-0: #FFFFFF;        /* Page canvas */
-    --bg-1: #EFF7F8;        /* Cards, raised panels — light teal tint */
+    --bg-1: #F5F5F7;        /* Cards, raised panels — light gray tint */
     --bg-2: #FFFFFF;        /* White surfaces sitting on tinted cards: inputs, pills */
-    --bg-3: #D6F0F3;        /* Hover, table header, alternating rows — deeper tint */
-    --surface:       #EFF7F8;
+    --bg-3: #E8E8ED;        /* Hover, table header, alternating rows — deeper tint */
+    --surface:       #F5F5F7;
     --surface-elev:  #FFFFFF;
-    --surface-hover: #D6F0F3;
+    --surface-hover: #E8E8ED;
 
-    /* Navy chrome. Kept separate from the surface ramp because the sidebar and
-       header are the only inverted surfaces in the app. */
-    --nav-bg: #061A3A;
+    /* Near-black chrome. Kept separate from the surface ramp because the
+       sidebar and header are the only inverted surfaces in the app. */
+    --nav-bg: #1D1D1F;
 
-    /* === BORDERS === Brand teal at reduced opacity, flattened over white so a
-       border looks identical whether it sits on #FFFFFF or on a tinted card. */
-    --border-subtle:  #E0F5F9;   /* teal @14% — hairline separators inside cards */
-    --border-default: #C7EEF4;   /* teal @25% — inputs and card edges */
-    --border-strong:  #20BAD1;   /* full brand teal — emphasis, active */
+    /* === BORDERS === Neutral gray, flattened over white so a border looks
+       identical whether it sits on #FFFFFF or on a tinted card. */
+    --border-subtle:  #E8E8ED;   /* hairline separators inside cards */
+    --border-default: #D2D2D7;   /* inputs and card edges */
+    --border-strong:  #1D1D1F;   /* near-black — emphasis, active */
 
     /* === TEXT === */
-    --text-primary:   #061A3A;   /* Navy — H1–H3, card titles, key values      17.26:1 */
-    --text-secondary: #222222;   /* Charcoal — body copy, table content        15.91:1 */
-    --text-tertiary:  #44536B;   /* Labels, data captions                       7.79:1 */
-    --text-muted:     #5D6A7F;   /* Placeholder, metadata                       5.48:1 */
-    --text-subtle:    #657081;   /* 5.01:1 on white · 4.62:1 on the #EFF7F8 tint */
+    --text-primary:   #1D1D1F;   /* Ink — H1–H3, card titles, key values      18.7:1 */
+    --text-secondary: #48484A;   /* Charcoal — body copy, table content       10.9:1 */
+    --text-tertiary:  #6E6E73;   /* Labels, data captions                      5.7:1 */
+    --text-muted:     #86868B;   /* Placeholder, metadata                      4.2:1 */
+    --text-subtle:    #98989D;   /* 3.6:1 on white · lower emphasis            */
 
-    /* === PRIMARY CTA === Brand teal fill, navy label (7.40:1).
-       Deliberately not white-on-teal, which is 2.33:1 and fails at every size. */
-    --cta-bg:        #20BAD1;
-    --cta-text:      #061A3A;
-    --cta-bg-hover:  #1CA1B5;
-    --cta-bg-active: #1A99AC;
+    /* === PRIMARY CTA === Near-black fill, white label — the only reliable
+       AA pairing once the palette is reduced to grayscale. */
+    --cta-bg:        #1D1D1F;
+    --cta-text:      #FFFFFF;
+    --cta-bg-hover:  #333336;
+    --cta-bg-active: #000000;
 
-    /* === ACCENT === See the contrast note above for why there are two teals. */
-    --accent:               #157B8A;   /* Teal ink — links, emphasis text on light */
-    --accent-solid:         #20BAD1;   /* Exact brand teal — fills, bars, indicators */
-    --accent-hover:         #10606C;
-    --accent-subtle:        #EFF7F8;
-    --accent-subtle-hover:  #D6F0F3;
-    --accent-border:        #20BAD1;
-    --accent-deep:          #061A3A;
-    --seattle-gold:         #157B8A;
+    /* === ACCENT === Monochrome: emphasis is carried by value, not hue. */
+    --accent:               #1D1D1F;   /* Ink — links, emphasis text on light */
+    --accent-solid:         #1D1D1F;   /* Near-black — fills, bars, indicators */
+    --accent-hover:         #000000;
+    --accent-subtle:        #F5F5F7;
+    --accent-subtle-hover:  #E8E8ED;
+    --accent-border:        #1D1D1F;
+    --accent-deep:          #1D1D1F;
+    --seattle-gold:         #48484A;
 
     /* === 3-TIER RISK SCALE ===
-       Amber and magenta appear here and nowhere else in the interface, so they
-       keep their alerting meaning. Each tier is always rendered with an icon or
-       a text label, so meaning never depends on colour alone.
+       Grayscale value ramp — darkest = highest severity. Each tier is always
+       rendered with an icon or a text label, so meaning never depends on
+       colour alone.
 
-       `-fill` is the exact specified colour, used for solid fills and borders.
-       `-ink`  is a same-hue shade that reaches 4.5:1 on the tier's own badge
-               fill; for high risk the specified colour already passes, so it
-               is unchanged.
-       `-bg`   is the 10% tint of the tier colour, pre-flattened over white. */
-    --risk-low-fill:  #20BAD1;   --risk-low-ink:  #157B8A;   --risk-low-bg:  #E9F8FA;
-    --risk-mod-fill:  #F2A035;   --risk-mod-ink:  #A5620B;   --risk-mod-bg:  #FEF6EB;
-    --risk-high-fill: #C2185B;   --risk-high-ink: #C2185B;   --risk-high-bg: #F9E8EF;
+       `-fill` is the tier's solid fill, used for badges and indicators.
+       `-ink`  is the tier's text/ink shade, tuned to sit on the tier's own
+               badge fill at a legible contrast.
+       `-bg`   is a light tint of the tier value, pre-flattened over white. */
+    --risk-low-fill:  #AEAEB2;   --risk-low-ink:  #6E6E73;   --risk-low-bg:  #F5F5F7;
+    --risk-mod-fill:  #6E6E73;   --risk-mod-ink:  #48484A;   --risk-mod-bg:  #EEEEEF;
+    --risk-high-fill: #1D1D1F;   --risk-high-ink: #1D1D1F;   --risk-high-bg: #E5E5E7;
 
     /* Incident severities mapped onto the three tiers. High = the driver was
        physically attacked; moderate = threatened during a forcible theft;
@@ -109,50 +102,51 @@
     --sev-incident: var(--risk-low-fill);
 
     /* === CHART SERIES === Generic (non-risk) sequence.
-       3rd and 4th are brand teal mixed toward white by 60% and 30%. */
-    --chart-1: #20BAD1;
-    --chart-2: #061A3A;
-    --chart-3: #A6E3ED;
-    --chart-4: #63CFDF;
-    --chart-grid: #D6F0F3;
+       A single value ramp from ink to light gray. */
+    --chart-1: #1D1D1F;
+    --chart-2: #6E6E73;
+    --chart-3: #AEAEB2;
+    --chart-4: #D2D2D7;
+    --chart-grid: #E8E8ED;
 
-    /* === STATUS === Navy weight, not severity colour: an open case is not a
-       risk tier and must not borrow amber or magenta. */
-    --status-open:   #061A3A;   /* Navy — needs attention */
-    --status-closed: #5D6A7F;   /* Muted — resolved, low emphasis */
+    /* === STATUS === Ink weight, not severity colour: an open case is not a
+       risk tier and must not borrow the risk ramp. */
+    --status-open:   #1D1D1F;   /* Ink — needs attention */
+    --status-closed: #86868B;   /* Muted — resolved, low emphasis */
 
     /* === FUNCTIONAL SYSTEM COLORS ===
-       Non-decorative status feedback only. Built from teal/navy because the
-       amber and magenta of the risk scale are reserved for incident severity;
-       these states are distinguished by icon, label and border weight. */
-    --success-fg:    #157B8A;   /* Teal ink — confirmations, "live" status, sent state */
-    --success-tint:  #EFF7F8;
-    --success-bd:    #20BAD1;
+       Non-decorative status feedback only. Built from the grayscale ramp
+       because the risk scale's value contrast is reserved for incident
+       severity; these states are distinguished by icon, label and border
+       weight. */
+    --success-fg:    #1D1D1F;   /* Ink — confirmations, "live" status, sent state */
+    --success-tint:  #F5F5F7;
+    --success-bd:    #1D1D1F;
 
-    --warning-fg:    #061A3A;   /* Navy — caution, "estimated" data, draft state */
-    --warning-tint:  #EFF7F8;
-    --warning-bd:    #20BAD1;
+    --warning-fg:    #1D1D1F;   /* Ink — caution, "estimated" data, draft state */
+    --warning-tint:  #F5F5F7;
+    --warning-bd:    #1D1D1F;
 
-    --error-fg:      #061A3A;   /* Navy on a heavy navy border — validation, failures */
-    --error-tint:    #EFF7F8;
-    --error-bd:      #061A3A;
+    --error-fg:      #1D1D1F;   /* Ink on a heavy ink border — validation, failures */
+    --error-tint:    #F5F5F7;
+    --error-bd:      #1D1D1F;
 
-    --info-fg:       #157B8A;   /* Teal ink — informational notices, links in content */
-    --info-tint:     #EFF7F8;
-    --info-bd:       #C7EEF4;
+    --info-fg:       #48484A;   /* Charcoal — informational notices, links in content */
+    --info-tint:     #F5F5F7;
+    --info-bd:       #D2D2D7;
 
     /* Legacy semantic state aliases */
-    --state-critical: #061A3A;
-    --state-warning:  #157B8A;
-    --state-notice:   #44536B;
-    --state-resolved: #5D6A7F;
+    --state-critical: #1D1D1F;
+    --state-warning:  #48484A;
+    --state-notice:   #6E6E73;
+    --state-resolved: #86868B;
 
-    /* === ELEVATION === Navy-tinted so shadows read as depth on a white canvas
-       rather than as gray haze. */
-    --shadow-xs: 0 1px 0 rgba(6, 26, 58, 0.05);
-    --shadow-sm: 0 1px 2px rgba(6, 26, 58, 0.08);
-    --shadow-md: 0 2px 6px rgba(6, 26, 58, 0.10);
-    --shadow-lg: 0 8px 24px rgba(6, 26, 58, 0.12);
+    /* === ELEVATION === Neutral black-tinted so shadows read as depth on a
+       white canvas rather than as colored haze. */
+    --shadow-xs: 0 1px 0 rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.10);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
 
     /* === MOTION === Unchanged */
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -165,51 +159,51 @@
     --radius-xl: 10px;
   }
 
-  /* === NAVY CHROME SCOPE ===
+  /* === INK CHROME SCOPE ===
      The sidebar and header are the only inverted surfaces. Rather than
      rewriting every descendant rule, the surface/text/border tokens are
      re-pointed here, so anything inside them that already reads a token is
-     re-themed for a navy background automatically. Every value below is
-     checked against #061A3A. */
+     re-themed for a near-black background automatically. Every value below
+     is checked against #1D1D1F. */
   .sidebar,
   .app-header {
-    --bg-0: #061A3A;
-    --bg-1: #061A3A;
-    --bg-2: #1A2C4A;          /* white @8% over navy — pills, inputs   13.97:1 w/ white */
-    --bg-3: #243552;          /* white @12% over navy — hover          12.31:1 w/ white */
-    --surface: #061A3A;
-    --surface-elev: #1A2C4A;
-    --surface-hover: #243552;
+    --bg-0: #1D1D1F;
+    --bg-1: #1D1D1F;
+    --bg-2: #2C2C2E;          /* white @8% over ink — pills, inputs   */
+    --bg-3: #3A3A3C;          /* white @12% over ink — hover          */
+    --surface: #1D1D1F;
+    --surface-elev: #2C2C2E;
+    --surface-hover: #3A3A3C;
 
-    --border-subtle:  #1A2C4A;
-    --border-default: #2E3F5A;
-    --border-strong:  #20BAD1;
+    --border-subtle:  #2C2C2E;
+    --border-default: #3A3A3C;
+    --border-strong:  #FFFFFF;
 
-    --text-primary:   #FFFFFF;   /* 17.26:1 on navy */
-    --text-secondary: #EFF7F8;   /* 15.89:1 */
-    --text-tertiary:  #C0CBD2;   /* 10.45:1 */
-    --text-muted:     #96A3B0;   /*  6.71:1 */
-    --text-subtle:    #8694A3;   /*  5.57:1 */
+    --text-primary:   #FFFFFF;   /* 18.7:1 on ink */
+    --text-secondary: #F5F5F7;   /* 17.4:1 */
+    --text-tertiary:  #98989D;   /*  7.9:1 */
+    --text-muted:     #86868B;   /*  5.9:1 */
+    --text-subtle:    #6E6E73;   /*  4.2:1 */
 
-    /* Brand teal is 7.40:1 on navy, so the nav gets the real thing. */
-    --accent:               #20BAD1;
-    --accent-hover:         #63CFDF;
-    --accent-subtle:        #1A2C4A;
-    --accent-subtle-hover:  #243552;
-    --accent-border:        #20BAD1;
-    --accent-deep:          #EFF7F8;
+    /* White is the brightest signal on ink, so the nav gets the real thing. */
+    --accent:               #FFFFFF;
+    --accent-hover:         #D2D2D7;
+    --accent-subtle:        #2C2C2E;
+    --accent-subtle-hover:  #3A3A3C;
+    --accent-border:        #FFFFFF;
+    --accent-deep:          #F5F5F7;
 
-    --success-fg:   #20BAD1;  --success-tint: #1A2C4A;  --success-bd: #20BAD1;
-    --warning-fg:   #EFF7F8;  --warning-tint: #1A2C4A;  --warning-bd: #20BAD1;
-    --error-fg:     #FFFFFF;  --error-tint:   #243552;  --error-bd:   #FFFFFF;
-    --info-fg:      #20BAD1;  --info-tint:    #1A2C4A;  --info-bd:    #2E3F5A;
+    --success-fg:   #FFFFFF;  --success-tint: #2C2C2E;  --success-bd: #FFFFFF;
+    --warning-fg:   #F5F5F7;  --warning-tint: #2C2C2E;  --warning-bd: #FFFFFF;
+    --error-fg:     #FFFFFF;  --error-tint:   #3A3A3C;  --error-bd:   #FFFFFF;
+    --info-fg:      #FFFFFF;  --info-tint:    #2C2C2E;  --info-bd:    #3A3A3C;
 
     --status-open:   #FFFFFF;
-    --status-closed: #96A3B0;
+    --status-closed: #98989D;
 
-    /* Active nav sits on navy, so the teal fill carries navy text (7.40:1). */
-    --cta-bg: #20BAD1;
-    --cta-text: #061A3A;
+    /* Active nav sits on ink, so the fill flips to white with ink text. */
+    --cta-bg: #FFFFFF;
+    --cta-text: #1D1D1F;
   }
 
   * { box-sizing: border-box; }
@@ -525,14 +519,14 @@
     width: 7px; height: 7px;
     border-radius: 50%;
     background: var(--accent-solid);
-    box-shadow: 0 0 0 0 rgba(32, 186, 209, 0.45);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.35);
     animation: pulse 1.8s infinite;
     display: inline-block;
   }
   @keyframes pulse {
-    0%   { box-shadow: 0 0 0 0 rgba(32, 186, 209, 0.45); }
-    70%  { box-shadow: 0 0 0 8px rgba(32, 186, 209, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(32, 186, 209, 0); }
+    0%   { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.35); }
+    70%  { box-shadow: 0 0 0 8px rgba(0, 0, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
   }
 
   /* ============= MAIN CONTENT ============= */
@@ -831,7 +825,7 @@
     height: 14px;
     border-radius: 50%;
     border: 2px solid var(--bg-2);
-    box-shadow: 0 0 0 1.5px var(--text-primary), 0 2px 4px rgba(6, 26, 58, 0.35);
+    box-shadow: 0 0 0 1.5px var(--text-primary), 0 2px 4px rgba(0, 0, 0, 0.35);
     z-index: 2;
     transition: transform 0.15s var(--ease-out);
   }
@@ -1025,10 +1019,10 @@
   .calc-input:hover { border-color: var(--border-strong); }
   .calc-input:focus {
     border-color: var(--accent-solid);
-    box-shadow: 0 0 0 3px rgba(32, 186, 209, 0.28);
+    box-shadow: 0 0 0 3px rgba(29, 29, 31, 0.28);
   }
   select.calc-input {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23157B8A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231D1D1F' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 10px center;
     padding-right: 32px;
@@ -1247,9 +1241,9 @@
   @media print {
     .sidebar, .app-header, #translate-btn, #refresh-btn, .search-wrapper { display: none !important; }
     main#page { padding: 0 !important; overflow: visible !important; }
-    .card { break-inside: avoid; box-shadow: none; border-color: #C7EEF4; }
-    body { background: #FFFFFF; color: #222222; }
-    * { color: #222222 !important; background: #FFFFFF !important; border-color: #C7EEF4 !important; }
+    .card { break-inside: avoid; box-shadow: none; border-color: #D2D2D7; }
+    body { background: #FFFFFF; color: #1D1D1F; }
+    * { color: #1D1D1F !important; background: #FFFFFF !important; border-color: #D2D2D7 !important; }
   }
 
   /* ============= CUSTOM TRANSLATE DROPDOWN ============= */
@@ -1445,17 +1439,16 @@
     .nav-item svg { width: 14px; height: 14px; }
     .nav-item .kbd-hint { display: none; }
     .nav-item.active::before { display: none; }
-    /* Active tab: solid darker brand teal with white text — inside .sidebar,
-       --accent-subtle resolves to navy (#1A2C4A) while the inherited text
-       color is also navy (#061A3A), which made the active label invisible.
-       White on #0E6E7E is 6.0:1 (WCAG AA). */
+    /* Active tab: solid white pill with ink text — inside .sidebar the
+       chrome background is near-black, so a white fill is the reliable
+       high-contrast pairing (18.7:1). */
     .nav-item.active {
-      background: #0E6E7E;
-      border: 1px solid #20BAD1;
-      color: #FFFFFF;
+      background: #FFFFFF;
+      border: 1px solid #FFFFFF;
+      color: #1D1D1F;
       font-weight: 600;
     }
-    .nav-item.active svg { color: #FFFFFF; opacity: 1; }
+    .nav-item.active svg { color: #1D1D1F; opacity: 1; }
 
     /* --- Main content fills width --- */
     .main-content { overflow: visible; display: block !important; }
@@ -1604,7 +1597,7 @@
     <div class="sidebar-brand">
       <div class="sidebar-brand-logo">
         <div class="sidebar-brand-mark">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#061A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           </svg>
         </div>

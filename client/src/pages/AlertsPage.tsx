@@ -16,7 +16,7 @@ const NEIGHBORHOODS = [
 ];
 
 const INPUT_CLASS =
-  "w-full bg-[#FFFFFF] border border-[#C7EEF4] rounded-md text-[12px] text-[#061A3A] px-3 py-2 focus:outline-none focus:border-[#C7EEF4] placeholder-[#5D6A7F] transition-colors";
+  "w-full bg-[#FFFFFF] border border-[#D2D2D7] rounded-md text-[12px] text-[#1D1D1F] px-3 py-2 focus:outline-none focus:border-[#D2D2D7] placeholder-[#86868B] transition-colors";
 
 export default function AlertsPage() {
   const [email, setEmail] = useState("");
@@ -78,10 +78,10 @@ export default function AlertsPage() {
           <div className="max-w-2xl space-y-5">
 
             {/* Subscriber count */}
-            <div className="flex items-center gap-2.5 px-4 py-3 rounded-md border border-[#C7EEF4] bg-[#EFF7F8]/20">
+            <div className="flex items-center gap-2.5 px-4 py-3 rounded-md border border-[#D2D2D7] bg-[#F5F5F7]/20">
               <Users size={14} style={{ color: ACCENT }} />
-              <span className="text-[11px] text-[#222222]">
-                <span className="tabular-nums font-semibold text-[#061A3A]">{subscriberCount}</span> current subscriber{subscriberCount !== 1 ? "s" : ""}
+              <span className="text-[11px] text-[#1D1D1F]">
+                <span className="tabular-nums font-semibold text-[#1D1D1F]">{subscriberCount}</span> current subscriber{subscriberCount !== 1 ? "s" : ""}
               </span>
             </div>
 
@@ -90,12 +90,12 @@ export default function AlertsPage() {
               <div
                 data-testid="alerts-success"
                 className="flex items-start gap-3 p-4 rounded-md border"
-                style={{ background: "#EFF7F8", borderColor: "#C7EEF4" }}
+                style={{ background: "#F5F5F7", borderColor: "#D2D2D7" }}
               >
                 <CheckCircle2 size={18} style={{ color: ACCENT }} className="mt-0.5 shrink-0" />
                 <div>
-                  <div className="text-[12px] font-semibold text-[#061A3A] mb-0.5">You're subscribed!</div>
-                  <div className="text-[11px] text-[#222222] leading-relaxed">
+                  <div className="text-[12px] font-semibold text-[#1D1D1F] mb-0.5">You're subscribed!</div>
+                  <div className="text-[11px] text-[#1D1D1F] leading-relaxed">
                     You'll receive alerts for incidents in your selected areas.
                   </div>
                   <button
@@ -111,10 +111,10 @@ export default function AlertsPage() {
 
             {/* Form */}
             {!success && (
-              <form onSubmit={handleSubmit} className="bg-[#FFFFFF] border border-[#C7EEF4] rounded-md p-5 space-y-4">
+              <form onSubmit={handleSubmit} className="bg-[#FFFFFF] border border-[#D2D2D7] rounded-md p-5 space-y-4">
                 <div className="flex items-center gap-2 mb-1">
                   <Bell size={14} style={{ color: ACCENT }} />
-                  <div className="text-[11px] font-semibold text-[#061A3A]">Alert Subscription</div>
+                  <div className="text-[11px] font-semibold text-[#1D1D1F]">Alert Subscription</div>
                 </div>
 
                 {/* Contact */}
@@ -157,7 +157,7 @@ export default function AlertsPage() {
                       {selected.size === NEIGHBORHOODS.length ? "Deselect All" : "Select All"}
                     </button>
                   </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1.5 p-3 rounded-md bg-[#FFFFFF] border border-[#C7EEF4]">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1.5 p-3 rounded-md bg-[#FFFFFF] border border-[#D2D2D7]">
                     {NEIGHBORHOODS.map(n => {
                       const checked = selected.has(n);
                       return (
@@ -168,8 +168,8 @@ export default function AlertsPage() {
                           onClick={() => toggleNeighborhood(n)}
                           className="flex items-center gap-1.5 px-2 py-1.5 rounded text-left text-[10px] transition-all"
                           style={checked
-                            ? { background: "#EFF7F8", color: ACCENT }
-                            : { color: "#222222" }}
+                            ? { background: "#F5F5F7", color: ACCENT }
+                            : { color: "#1D1D1F" }}
                         >
                           <span
                             className="w-3 h-3 rounded border shrink-0 flex items-center justify-center"
@@ -177,7 +177,7 @@ export default function AlertsPage() {
                           >
                             {checked && (
                               <svg width="7" height="5" viewBox="0 0 7 5" fill="none">
-                                <path d="M1 2.5L2.8 4.2L6 1" stroke="#061A3A" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M1 2.5L2.8 4.2L6 1" stroke="#FFFFFF" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                               </svg>
                             )}
                           </span>
@@ -187,14 +187,14 @@ export default function AlertsPage() {
                     })}
                   </div>
                   {selected.size > 0 && (
-                    <div className="text-[9px] text-[#44536B] mt-1">{selected.size} neighborhood{selected.size > 1 ? "s" : ""} selected</div>
+                    <div className="text-[9px] text-[#6E6E73] mt-1">{selected.size} neighborhood{selected.size > 1 ? "s" : ""} selected</div>
                   )}
                 </div>
 
                 {/* Error */}
                 {error && (
-                  <div className="text-[11px] text-[#061A3A] px-3 py-2 rounded border"
-                    style={{ background: "#EFF7F8", borderColor: "#C7EEF4" }}>
+                  <div className="text-[11px] text-[#1D1D1F] px-3 py-2 rounded border"
+                    style={{ background: "#F5F5F7", borderColor: "#D2D2D7" }}>
                     {error}
                   </div>
                 )}
@@ -204,7 +204,7 @@ export default function AlertsPage() {
                   data-testid="alerts-subscribe"
                   type="submit"
                   disabled={loading}
-                  className="w-full py-2.5 rounded-md text-[12px] font-semibold text-[#061A3A] transition-opacity hover:opacity-90 active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-60"
+                  className="w-full py-2.5 rounded-md text-[12px] font-semibold text-[#FFFFFF] transition-opacity hover:opacity-90 active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-60"
                   style={{ background: ACCENT_FILL }}
                 >
                   {loading && <Loader2 size={13} className="animate-spin" />}
@@ -214,15 +214,15 @@ export default function AlertsPage() {
             )}
 
             {/* Privacy note */}
-            <div className="px-4 py-3 rounded-md border border-[#C7EEF4] bg-[#FFFFFF]">
-              <div className="text-[10px] text-[#44536B] leading-relaxed">
+            <div className="px-4 py-3 rounded-md border border-[#D2D2D7] bg-[#FFFFFF]">
+              <div className="text-[10px] text-[#6E6E73] leading-relaxed">
                 Alert notifications are sent when new verified incidents are added to the database. We do not share your information with third parties or platforms.
               </div>
             </div>
 
           </div>
 
-          <div className="text-[9px] text-[#44536B] mt-5 pb-2">
+          <div className="text-[9px] text-[#6E6E73] mt-5 pb-2">
             bullecloud.com · Alerts are sent for verified incidents only.
           </div>
         </main>

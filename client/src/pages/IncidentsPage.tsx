@@ -42,11 +42,11 @@ export default function IncidentsPage() {
     <Layout title="All Incidents" subtitle="Complete Incident Database · Seattle Metro">
         <main className="flex-1 p-3 md:p-4 flex flex-col gap-3 min-h-0">
 
-          <div className="bg-[#FFFFFF] border border-[#C7EEF4] rounded-md px-4 py-2.5 flex items-center gap-3 flex-wrap">
+          <div className="bg-[#FFFFFF] border border-[#D2D2D7] rounded-md px-4 py-2.5 flex items-center gap-3 flex-wrap">
             <div className="relative flex-1 min-w-[180px]">
-              <Search size={11} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#44536B]" />
+              <Search size={11} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#6E6E73]" />
               <input data-testid="input-search" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search…"
-                className="w-full pl-7 pr-2 py-1.5 bg-[#FFFFFF] border border-[#C7EEF4] rounded text-[10px] text-[#061A3A] placeholder:text-[#44536B] focus:outline-none focus:border-[#C7EEF4]/60" />
+                className="w-full pl-7 pr-2 py-1.5 bg-[#FFFFFF] border border-[#D2D2D7] rounded text-[10px] text-[#1D1D1F] placeholder:text-[#6E6E73] focus:outline-none focus:border-[#D2D2D7]/60" />
             </div>
             {[
               { label: "Platform", opts: ["All","Uber","Lyft","DoorDash","Amazon Flex"], val: platform, set: setPlatform },
@@ -56,39 +56,39 @@ export default function IncidentsPage() {
               <div key={label} className="flex items-center gap-1">
                 <span className="section-label">{label}</span>
                 <select value={val} onChange={e => set(e.target.value)}
-                  className="text-[10px] bg-[#FFFFFF] border border-[#C7EEF4] text-[#061A3A] rounded px-1.5 py-1 capitalize focus:outline-none hover:border-[#63CFDF]">
+                  className="text-[10px] bg-[#FFFFFF] border border-[#D2D2D7] text-[#1D1D1F] rounded px-1.5 py-1 capitalize focus:outline-none hover:border-[#AEAEB2]">
                   {opts.map(o => <option key={o} value={o}>{o}</option>)}
                 </select>
               </div>
             ))}
-            <button onClick={() => setSortDir(d => d === "desc" ? "asc" : "desc")} className="text-[10px] text-[#222222] border border-[#C7EEF4] px-2 py-1 rounded hover:border-[#63CFDF]">Date {sortDir === "desc" ? "↓" : "↑"}</button>
-            <button data-testid="button-export" onClick={download} className="flex items-center gap-1 text-[10px] text-[#222222] border border-[#C7EEF4] px-2 py-1 rounded hover:border-[#63CFDF]"><Download size={10} /> CSV</button>
-            <span className="text-[10px] text-[#44536B] tabular-nums ml-auto">{filtered.length}</span>
+            <button onClick={() => setSortDir(d => d === "desc" ? "asc" : "desc")} className="text-[10px] text-[#1D1D1F] border border-[#D2D2D7] px-2 py-1 rounded hover:border-[#AEAEB2]">Date {sortDir === "desc" ? "↓" : "↑"}</button>
+            <button data-testid="button-export" onClick={download} className="flex items-center gap-1 text-[10px] text-[#1D1D1F] border border-[#D2D2D7] px-2 py-1 rounded hover:border-[#AEAEB2]"><Download size={10} /> CSV</button>
+            <span className="text-[10px] text-[#6E6E73] tabular-nums ml-auto">{filtered.length}</span>
           </div>
 
-          <div className="flex-1 bg-[#FFFFFF] border border-[#C7EEF4] rounded-md overflow-hidden flex flex-col min-h-0">
+          <div className="flex-1 bg-[#FFFFFF] border border-[#D2D2D7] rounded-md overflow-hidden flex flex-col min-h-0">
             <div className="overflow-y-auto overflow-x-auto flex-1">
               <table className="w-full text-[11px] min-w-[600px]">
                 <thead className="sticky top-0 z-10">
-                  <tr className="bg-[#FFFFFF] border-b border-[#C7EEF4]">
+                  <tr className="bg-[#FFFFFF] border-b border-[#D2D2D7]">
                     {["Date","Type","Severity","Neighborhood","Platform","Victim","Status","Source"].map(h => (
-                      <th key={h} className="px-4 py-2 text-left text-[9px] font-medium text-[#44536B] uppercase tracking-wider">{h}</th>
+                      <th key={h} className="px-4 py-2 text-left text-[9px] font-medium text-[#6E6E73] uppercase tracking-wider">{h}</th>
                     ))}
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#C7EEF4]">
-                  {isLoading ? Array(8).fill(0).map((_, i) => <tr key={i}>{Array(8).fill(0).map((_, j) => <td key={j} className="px-4 py-3"><div className="h-3 bg-[#D6F0F3] rounded animate-pulse w-16" /></td>)}</tr>)
-                    : !filtered.length ? <tr><td colSpan={8} className="px-4 py-12 text-center text-[#44536B] text-[11px]">No results.</td></tr>
+                <tbody className="divide-y divide-[#D2D2D7]">
+                  {isLoading ? Array(8).fill(0).map((_, i) => <tr key={i}>{Array(8).fill(0).map((_, j) => <td key={j} className="px-4 py-3"><div className="h-3 bg-[#E8E8ED] rounded animate-pulse w-16" /></td>)}</tr>)
+                    : !filtered.length ? <tr><td colSpan={8} className="px-4 py-12 text-center text-[#6E6E73] text-[11px]">No results.</td></tr>
                     : filtered.map(inc => (
-                      <tr key={inc.id} data-testid={`row-incident-${inc.id}`} className="hover:bg-[#EFF7F8] transition-colors">
-                        <td className="px-4 py-2.5 tabular-nums text-[#222222] whitespace-nowrap">{new Date(inc.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</td>
-                        <td className="px-4 py-2.5 font-medium text-[#061A3A] max-w-[130px] truncate">{inc.type}</td>
+                      <tr key={inc.id} data-testid={`row-incident-${inc.id}`} className="hover:bg-[#F5F5F7] transition-colors">
+                        <td className="px-4 py-2.5 tabular-nums text-[#1D1D1F] whitespace-nowrap">{new Date(inc.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</td>
+                        <td className="px-4 py-2.5 font-medium text-[#1D1D1F] max-w-[130px] truncate">{inc.type}</td>
                         <td className="px-4 py-2.5"><SeverityBadge severity={inc.severity} /></td>
-                        <td className="px-4 py-2.5 text-[#222222]">{inc.neighborhood}</td>
-                        <td className="px-4 py-2.5 text-[#222222]">{inc.platform}</td>
-                        <td className="px-4 py-2.5 text-[#222222] max-w-[100px] truncate">{inc.victim ?? "—"}</td>
+                        <td className="px-4 py-2.5 text-[#1D1D1F]">{inc.neighborhood}</td>
+                        <td className="px-4 py-2.5 text-[#1D1D1F]">{inc.platform}</td>
+                        <td className="px-4 py-2.5 text-[#1D1D1F] max-w-[100px] truncate">{inc.victim ?? "—"}</td>
                         <td className="px-4 py-2.5"><StatusBadge status={inc.status} /></td>
-                        <td className="px-4 py-2.5 text-[#44536B] max-w-[100px] truncate text-[9px]">{inc.source}</td>
+                        <td className="px-4 py-2.5 text-[#6E6E73] max-w-[100px] truncate text-[9px]">{inc.source}</td>
                       </tr>
                     ))
                   }

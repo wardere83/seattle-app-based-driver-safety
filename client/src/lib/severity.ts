@@ -1,17 +1,17 @@
 // Canonical risk scale — single source of truth for all pages/components.
 // Mirrors the :root --risk-* / --sev-* tokens in client/src/index.css.
 //
-// Three tiers replace the old five-step ramp:
-//   high (#C2185B) — the driver suffered bodily harm or was physically attacked
-//   mod  (#F2A035) — the driver was threatened during a forcible theft
-//   low  (#20BAD1) — regulatory / court / news records, no active threat
-// #F2A035 and #C2185B are reserved: they appear nowhere outside this scale.
+// Three tiers, distinguished by VALUE (lightness) only — never hue — plus
+// the text label and icon on every badge, so meaning never depends on color:
+//   high (#1D1D1F) — the driver suffered bodily harm or was physically attacked
+//   mod  (#6E6E73) — the driver was threatened during a forcible theft
+//   low  (#AEAEB2) — regulatory / court / news records, no active threat
 export type RiskTier = "low" | "mod" | "high";
 
 export const RISK_TIERS: Record<RiskTier, { label: string; fill: string; ink: string; bg: string }> = {
-  low:  { label: "Low risk",      fill: "#20BAD1", ink: "#157B8A", bg: "#E9F8FA" },
-  mod:  { label: "Moderate risk", fill: "#F2A035", ink: "#A5620B", bg: "#FEF6EB" },
-  high: { label: "High risk",     fill: "#C2185B", ink: "#C2185B", bg: "#F9E8EF" },
+  low:  { label: "Low risk",      fill: "#AEAEB2", ink: "#6E6E73", bg: "#F5F5F7" },
+  mod:  { label: "Moderate risk", fill: "#6E6E73", ink: "#48484A", bg: "#EEEEEF" },
+  high: { label: "High risk",     fill: "#1D1D1F", ink: "#1D1D1F", bg: "#E5E5E7" },
 };
 
 export const SEV_TIER: Record<string, RiskTier> = {

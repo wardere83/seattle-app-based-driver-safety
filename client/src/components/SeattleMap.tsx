@@ -46,7 +46,7 @@ export default function SeattleMap({ incidents, selectedId, onSelectIncident, sh
       const pts = incidents.map(i => [i.lat, i.lng, i.severity === "fatal" ? 1 : 0.55]);
       const h = (L as any).heatLayer(pts, {
         radius: 30, blur: 20, maxZoom: 13, max: 1,
-        gradient: { 0.2: BRAND.tint, 0.4: "#A6E3ED", 0.6: "#63CFDF", 0.8: BRAND.teal, 1.0: BRAND.tealDim },
+        gradient: { 0.2: BRAND.tint, 0.4: "#AEAEB2", 0.6: "#AEAEB2", 0.8: BRAND.teal, 1.0: BRAND.tealDim },
       });
       h.addTo(map); hRef.current = h;
     } else {

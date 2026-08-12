@@ -3,64 +3,61 @@
 @tailwind utilities;
 
 /* ═══════════════════════════════════════════════════════════
-   BULLE CONSULTING BRAND DESIGN SYSTEM
-   White canvas · deep-navy chrome · brand-teal accents
+   SAFETY STEWARD DESIGN SYSTEM — MINIMALIST BLACK & WHITE
+   White canvas · ink chrome · monochrome accents (Apple.com-style)
 
-   Palette: #20BAD1 teal · #061A3A navy · #222222 charcoal
-            #EFF7F8 light teal tint · #FFFFFF white
+   Palette: #1D1D1F ink · #F5F5F7 light gray tint · #FFFFFF white
 
-   Contrast note: #20BAD1 on #FFFFFF is only 2.33:1, so brand teal can
-   never carry text, or be text, on a light surface. Two teal tokens
-   therefore exist — `--accent-solid` is the exact brand teal, used for
-   fills and non-text marks only, and `--accent` is a same-hue darker
-   shade (#157B8A, 4.96:1 on white) used wherever teal must be legible.
-   Inside navy chrome, teal scores 7.40:1, so `.sidebar`/`.app-header`
-   re-point `--accent` at the full brand teal.
+   Every accent, focus ring, chart, and badge in this file is a shade
+   of gray or true black — no hue carries meaning. Risk tiers are
+   communicated through value (lightness) plus text + icon labels,
+   never through color alone. Inside ink chrome, the scale flips:
+   white text/accents on near-black surfaces.
    ═══════════════════════════════════════════════════════════ */
 
 @layer base {
   :root {
-    /* Surface hierarchy — white canvas with light-teal tinted sections */
+    /* Surface hierarchy — white canvas with light-gray tinted sections */
     --bg-base:    0 0% 100%;        /* #FFFFFF — main page background */
-    --bg-raised:  187 39% 95.5%;    /* #EFF7F8 — tinted sections, alt rows */
+    --bg-raised:  240 11.1% 96.5%;  /* #F5F5F7 — tinted sections, alt rows */
     --bg-surface: 0 0% 100%;        /* #FFFFFF — cards, modals */
     --bg-overlay: 0 0% 100%;        /* #FFFFFF — dropdowns, tooltips */
-    --bg-hover:   186 55% 89.6%;    /* #D6F0F3 — list/row hover */
-    --nav-bg:     217 81% 12.5%;    /* #061A3A — nav bar / sidebar */
+    --bg-hover:   240 12.2% 92.0%;  /* #E8E8ED — list/row hover */
+    --nav-bg:     240 3.3% 11.8%;   /* #1D1D1F — nav bar / sidebar */
 
-    /* Text hierarchy (contrast on #FFFFFF: 17.3 / 15.9 / 7.8 / 5.5) */
-    --text-primary:    217 81% 12.5%;  /* #061A3A — headings H1–H3, data labels */
-    --text-secondary:  0 0% 13.3%;     /* #222222 — body, table content */
-    --text-tertiary:   217 22% 34.3%;  /* #44536B — secondary labels */
-    --text-quaternary: 217 15% 43.1%;  /* #5D6A7F — captions, meta */
+    /* Text hierarchy (contrast on #FFFFFF: 17.9 / 10.9 / 5.9 / 3.9) */
+    --text-primary:    240 3.3% 11.8%;  /* #1D1D1F — headings H1–H3, data labels */
+    --text-secondary:  240 1.4% 28.6%;  /* #48484A — body, table content */
+    --text-tertiary:   240 2.2% 44.1%;  /* #6E6E73 — secondary labels */
+    --text-quaternary: 240 2.1% 53.5%;  /* #86868B — captions, meta */
 
-    /* Brand accent — legible teal ink + exact brand teal for fills */
-    --accent:       188 74% 31.2%;  /* #157B8A — teal text/icons, 4.96:1 on white */
-    --accent-solid: 188 73% 47.3%;  /* #20BAD1 — brand teal, fills only */
-    --accent-dim:   188 74% 24.3%;  /* #10606C — hover on teal ink */
-    --accent-bg:    187 39% 95.5%;  /* #EFF7F8 — subtle teal wash */
-    --accent-soft:  186 55% 89.6%;  /* #D6F0F3 — soft chip bg */
+    /* Accent — ink for text/icons and for fills alike (monochrome) */
+    --accent:       240 3.3% 11.8%;  /* #1D1D1F — ink text/icons */
+    --accent-solid: 240 3.3% 11.8%;  /* #1D1D1F — ink, fills */
+    --accent-dim:   0 0% 0%;         /* #000000 — hover on ink */
+    --accent-bg:    240 11.1% 96.5%; /* #F5F5F7 — subtle gray wash */
+    --accent-soft:  240 12.2% 92.0%; /* #E8E8ED — soft chip bg */
 
     /* Status accents */
-    --status-open:     217 81% 12.5%;  /* #061A3A */
-    --status-resolved: 217 15% 43.1%;  /* #5D6A7F */
+    --status-open:     240 3.3% 11.8%;  /* #1D1D1F */
+    --status-resolved: 240 2.1% 53.5%;  /* #86868B */
 
-    /* Borders and dividers — brand teal at reduced opacity over white */
-    --border:      188 67% 86.9%;   /* #C7EEF4 — teal @25% */
-    --border-lite: 188 73% 47.3%;   /* #20BAD1 — hover/emphasis */
+    /* Borders and dividers — neutral gray at graduated strength */
+    --border:      240 5.9% 83.3%;   /* #D2D2D7 */
+    --border-lite: 240 3.3% 11.8%;   /* #1D1D1F — hover/emphasis */
 
-    /* ── Risk scale — three tiers, the ONLY place amber/magenta appear ──
+    /* ── Risk scale — three tiers by VALUE only, never hue ──
        -fill = solid mark, -ink = AA-safe text on the 10% tint,
-       -bg   = 10% tint of the tier colour flattened over white. */
-    --risk-low-fill:   188 73% 47.3%;  /* #20BAD1 */
-    --risk-low-ink:    188 74% 31.2%;  /* #157B8A — 4.55:1 on its tint */
-    --risk-low-bg:     187 63% 94.7%;  /* #E9F8FA */
-    --risk-mod-fill:   34 88% 57.8%;   /* #F2A035 */
-    --risk-mod-ink:    34 88% 34.5%;   /* #A5620B — 4.50:1 on its tint */
-    --risk-mod-bg:     35 90% 95.9%;   /* #FEF6EB */
-    --risk-high-fill:  336 78% 42.7%;  /* #C2185B */
-    --risk-high-ink:   336 78% 42.7%;  /* #C2185B — 4.98:1 on its tint */
-    --risk-high-bg:    335 59% 94.3%;  /* #F9E8EF */
+       -bg   = light gray tint flattened over white. */
+    --risk-low-fill:   240 2.5% 69.0%;  /* #AEAEB2 */
+    --risk-low-ink:    240 2.2% 44.1%;  /* #6E6E73 */
+    --risk-low-bg:     240 11.1% 96.5%; /* #F5F5F7 */
+    --risk-mod-fill:   240 2.2% 44.1%;  /* #6E6E73 */
+    --risk-mod-ink:    240 1.4% 28.6%;  /* #48484A */
+    --risk-mod-bg:     240 3.0% 93.5%;  /* #EEEEEF */
+    --risk-high-fill:  240 3.3% 11.8%;  /* #1D1D1F */
+    --risk-high-ink:   240 3.3% 11.8%;  /* #1D1D1F */
+    --risk-high-bg:    240 4.0% 90.2%;  /* #E5E5E7 */
 
     /* Incident type → risk tier */
     --sev-fatal:   var(--risk-high-fill);
@@ -69,12 +66,12 @@
     --sev-robbery: var(--risk-mod-fill);
     --sev-policy:  var(--risk-low-fill);
 
-    /* Chart sequence — teal, navy, then teal mixed toward white 60% / 30% */
-    --chart-1: 188 73% 47.3%;   /* #20BAD1 */
-    --chart-2: 217 81% 12.5%;   /* #061A3A */
-    --chart-3: 188 66% 79.0%;   /* #A6E3ED */
-    --chart-4: 188 66% 63.1%;   /* #63CFDF */
-    --chart-grid: 186 55% 89.6%; /* #D6F0F3 */
+    /* Chart sequence — ink stepped toward white in even gray increments */
+    --chart-1: 240 3.3% 11.8%;   /* #1D1D1F */
+    --chart-2: 240 2.2% 44.1%;   /* #6E6E73 */
+    --chart-3: 240 2.5% 69.0%;   /* #AEAEB2 */
+    --chart-4: 240 5.9% 83.3%;   /* #D2D2D7 */
+    --chart-grid: 240 12.2% 92.0%; /* #E8E8ED */
 
     /* Shadcn compat tokens */
     --background: var(--bg-base);
@@ -84,7 +81,7 @@
     --popover: var(--bg-overlay);
     --popover-foreground: var(--text-primary);
     --primary: var(--accent-solid);
-    --primary-foreground: 217 81% 12.5%;  /* navy on teal — 7.40:1 */
+    --primary-foreground: 0 0% 100%;  /* white on ink — 17.9:1 */
     --secondary: var(--bg-raised);
     --secondary-foreground: var(--text-secondary);
     --muted: var(--bg-raised);
@@ -98,34 +95,34 @@
   }
 }
 
-/* ── Navy chrome scope ──────────────────────────────────────
+/* ── Ink chrome scope ──────────────────────────────────────
    Re-points the same tokens inside the sidebar and header so every
-   descendant inverts to white-on-navy without any structural change.
-   White on #061A3A is 17.26:1; brand teal on navy is 7.40:1. */
+   descendant inverts to white-on-ink without any structural change.
+   White on #1D1D1F is 17.9:1. */
 .sidebar,
 .app-header {
-  --bg-base:    217 81% 12.5%;   /* #061A3A */
-  --bg-raised:  217 81% 12.5%;
-  --bg-surface: 218 48% 19.6%;   /* #1A2C4A — white @8% over navy */
-  --bg-overlay: 218 39% 23.1%;   /* #243552 — white @12% over navy */
-  --bg-hover:   218 39% 23.1%;
+  --bg-base:    240 3.3% 11.8%;   /* #1D1D1F */
+  --bg-raised:  240 3.3% 11.8%;
+  --bg-surface: 240 2.2% 17.6%;   /* #2C2C2E — elevated surface */
+  --bg-overlay: 240 1.7% 23.1%;   /* #3A3A3C — dropdowns, tooltips */
+  --bg-hover:   240 1.7% 23.1%;
 
-  --text-primary:    0 0% 100%;      /* #FFFFFF — 17.26:1 */
-  --text-secondary:  187 39% 95.5%;  /* #EFF7F8 — 15.89:1 */
-  --text-tertiary:   203 17% 78.8%;  /* #C0CBD2 — 10.45:1 */
-  --text-quaternary: 210 14% 63.9%;  /* #96A3B0 —  6.71:1 */
+  --text-primary:    0 0% 100%;      /* #FFFFFF — 17.9:1 */
+  --text-secondary:  240 11.1% 96.5%; /* #F5F5F7 — 16.6:1 */
+  --text-tertiary:   240 2.5% 60.6%;  /* #98989D —  6.7:1 */
+  --text-quaternary: 240 2.1% 53.5%;  /* #86868B —  4.9:1 */
 
-  --accent:       188 73% 47.3%;  /* #20BAD1 — 7.40:1 on navy */
-  --accent-solid: 188 73% 47.3%;
-  --accent-dim:   188 66% 63.1%;  /* #63CFDF */
-  --accent-bg:    218 48% 19.6%;
-  --accent-soft:  218 39% 23.1%;
+  --accent:       0 0% 100%;      /* #FFFFFF — max contrast on ink */
+  --accent-solid: 0 0% 100%;
+  --accent-dim:   240 5.9% 83.3%;  /* #D2D2D7 */
+  --accent-bg:    240 2.2% 17.6%;
+  --accent-soft:  240 1.7% 23.1%;
 
-  --border:      218 48% 19.6%;   /* #1A2C4A */
-  --border-lite: 188 73% 47.3%;   /* #20BAD1 */
+  --border:      240 2.2% 17.6%;   /* #2C2C2E */
+  --border-lite: 0 0% 100%;        /* #FFFFFF */
 
   --status-open:     0 0% 100%;
-  --status-resolved: 210 14% 63.9%;
+  --status-resolved: 240 2.5% 60.6%;
 
   --background: var(--bg-base);
   --foreground: var(--text-primary);
@@ -335,7 +332,7 @@ button:hover .rotating-globe { animation-play-state: paused; }
 /* ── Primary button — brand white for key CTAs ── */
 .btn-primary {
   background: hsl(var(--accent-solid));
-  color: hsl(217 81% 12.5%);
+  color: hsl(0 0% 100%);
   font-weight: 500;
   font-size: 12px;
   padding: 8px 16px;
@@ -344,7 +341,7 @@ button:hover .rotating-globe { animation-play-state: paused; }
   cursor: pointer;
   transition: background 0.15s ease, transform 0.1s ease;
 }
-.btn-primary:hover { background: hsl(188 73% 41%); border-color: hsl(188 73% 41%); }
+.btn-primary:hover { background: hsl(0 0% 0%); border-color: hsl(0 0% 0%); }
 .btn-primary:active { transform: scale(0.98); }
 
 /* Alt: silver-outlined surface button for secondary emphasis */

@@ -26,7 +26,7 @@ const Tip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null;
   return (
     <div className="chart-tooltip">
-      <p className="font-medium text-[#061A3A] mb-0.5">{label}</p>
+      <p className="font-medium text-[#1D1D1F] mb-0.5">{label}</p>
       {payload.map((p: any, i: number) => (
         <p key={i} className="text-[10px]" style={{ color: p.color || p.fill || ACCENT_INK }}>
           {p.name}: <span className="font-medium">{p.value}</span>
@@ -40,10 +40,10 @@ function SectionCard({ title, subtitle, children }: {
   title: string; subtitle?: string; children: React.ReactNode;
 }) {
   return (
-    <div className="bg-[#FFFFFF] border border-[#C7EEF4] rounded-md p-4">
+    <div className="bg-[#FFFFFF] border border-[#D2D2D7] rounded-md p-4">
       <div className="mb-3">
-        <div className="text-[11px] font-semibold text-[#061A3A]">{title}</div>
-        {subtitle && <div className="text-[9px] text-[#44536B] mt-0.5">{subtitle}</div>}
+        <div className="text-[11px] font-semibold text-[#1D1D1F]">{title}</div>
+        {subtitle && <div className="text-[9px] text-[#6E6E73] mt-0.5">{subtitle}</div>}
       </div>
       {children}
     </div>
@@ -70,17 +70,17 @@ function TimeHeatmap({ byHour }: { byHour: Record<string, number> }) {
           <Bar dataKey="count" name="Incidents" radius={[2, 2, 0, 0]}>
             {data.map((entry, i) => {
               const intensity = max > 0 ? entry.count / max : 0;
-              // Teal ramp: light tint #EFF7F8 -> brand teal #20BAD1
+              // Grayscale ramp: light tint #F5F5F7 -> ink #1D1D1F
               const mix = (a: number, b: number) => Math.round(a + intensity * (b - a));
               const color = entry.count === 0
                 ? BRAND.tint
-                : `rgb(${mix(239, 32)},${mix(247, 186)},${mix(248, 209)})`;
+                : `rgb(${mix(245, 29)},${mix(245, 29)},${mix(247, 31)})`;
               return <Cell key={i} fill={color} opacity={entry.count === 0 ? 0.6 : 1} />;
             })}
           </Bar>
         </BarChart>
       </ResponsiveContainer>
-      <p className="text-[9px] text-[#44536B] mt-2 leading-relaxed">
+      <p className="text-[9px] text-[#6E6E73] mt-2 leading-relaxed">
         Based on incidents with recorded times. Not all incidents have time data.
       </p>
     </SectionCard>
@@ -159,7 +159,7 @@ function PlatformComparison({ byPlatform }: { byPlatform: Record<string, number>
           </Bar>
         </BarChart>
       </ResponsiveContainer>
-      <p className="text-[9px] text-[#44536B] mt-2 leading-relaxed">
+      <p className="text-[9px] text-[#6E6E73] mt-2 leading-relaxed">
         Counts are not normalized by active driver population.
       </p>
     </SectionCard>
@@ -174,7 +174,7 @@ function RepeatLocations({ repeatLocations }: { repeatLocations: [string, number
   return (
     <SectionCard title="Repeat Incident Locations" subtitle="Neighborhoods with 2+ incidents">
       {sorted.length === 0 ? (
-        <p className="text-[10px] text-[#44536B]">No repeat locations recorded.</p>
+        <p className="text-[10px] text-[#6E6E73]">No repeat locations recorded.</p>
       ) : (
         <div className="space-y-2">
           {sorted.map(([neighborhood, count]) => {
@@ -213,7 +213,7 @@ const CASE_STATUS_COLORS: Record<string, { bg: string; color: string; border: st
   arraigned:  { bg: BRAND.tint,     color: BRAND.tealInk, border: BRAND.border },
   arrested:   { bg: BRAND.tint,     color: BRAND.tealInk, border: BRAND.border },
   convicted:  { bg: BRAND.tintDeep, color: BRAND.navy,    border: BRAND.teal },
-  sentenced:  { bg: BRAND.teal,     color: BRAND.navy,    border: BRAND.teal },
+  sentenced:  { bg: BRAND.teal,     color: BRAND.white,   border: BRAND.teal },
   charged:    { bg: BRAND.tint,     color: BRAND.tealInk, border: BRAND.border },
   resolved:   { bg: BRAND.tint,     color: BRAND.charcoal, border: BRAND.border },
 };
@@ -226,38 +226,38 @@ function CaseTracker({ incidents }: { incidents: Incident[] }) {
   return (
     <SectionCard title="Court Case Tracker" subtitle="Incidents with active or resolved cases">
       {caseIncidents.length === 0 ? (
-        <p className="text-[10px] text-[#44536B]">No case data available.</p>
+        <p className="text-[10px] text-[#6E6E73]">No case data available.</p>
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full text-[11px]">
             <thead>
-              <tr className="bg-[#FFFFFF] border-b border-[#C7EEF4]">
+              <tr className="bg-[#FFFFFF] border-b border-[#D2D2D7]">
                 {["Date", "Type", "Suspect", "Case #", "Status", "Sentence"].map(h => (
-                  <th key={h} className="px-3 py-2 text-left text-[9px] font-medium text-[#44536B] uppercase tracking-wider whitespace-nowrap">{h}</th>
+                  <th key={h} className="px-3 py-2 text-left text-[9px] font-medium text-[#6E6E73] uppercase tracking-wider whitespace-nowrap">{h}</th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#C7EEF4]">
+            <tbody className="divide-y divide-[#D2D2D7]">
               {caseIncidents.map(inc => {
                 const caseStatus = (inc as any).caseStatus ?? "";
                 const statusStyle = CASE_STATUS_COLORS[caseStatus?.toLowerCase()] ?? { bg: "transparent", color: BRAND.ink2, border: BRAND.border };
                 return (
-                  <tr key={inc.id} data-testid={`case-row-${inc.id}`} className="hover:bg-[#EFF7F8] transition-colors">
-                    <td className="px-3 py-2.5 tabular-nums text-[#222222] whitespace-nowrap">
+                  <tr key={inc.id} data-testid={`case-row-${inc.id}`} className="hover:bg-[#F5F5F7] transition-colors">
+                    <td className="px-3 py-2.5 tabular-nums text-[#1D1D1F] whitespace-nowrap">
                       {new Date(inc.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                     </td>
-                    <td className="px-3 py-2.5 text-[#061A3A] font-medium max-w-[140px] truncate">{inc.type}</td>
-                    <td className="px-3 py-2.5 text-[#222222]">{(inc as any).suspectName ?? "—"}</td>
-                    <td className="px-3 py-2.5 text-[#222222] tabular-nums">{(inc as any).caseNumber ?? "—"}</td>
+                    <td className="px-3 py-2.5 text-[#1D1D1F] font-medium max-w-[140px] truncate">{inc.type}</td>
+                    <td className="px-3 py-2.5 text-[#1D1D1F]">{(inc as any).suspectName ?? "—"}</td>
+                    <td className="px-3 py-2.5 text-[#1D1D1F] tabular-nums">{(inc as any).caseNumber ?? "—"}</td>
                     <td className="px-3 py-2.5">
                       {caseStatus ? (
                         <span className="px-2 py-0.5 rounded text-[9px] font-medium capitalize"
                           style={{ background: statusStyle.bg, color: statusStyle.color, border: `1px solid ${statusStyle.border}` }}>
                           {caseStatus}
                         </span>
-                      ) : <span className="text-[#44536B]">—</span>}
+                      ) : <span className="text-[#6E6E73]">—</span>}
                     </td>
-                    <td className="px-3 py-2.5 text-[#222222]">{(inc as any).sentence ?? "—"}</td>
+                    <td className="px-3 py-2.5 text-[#1D1D1F]">{(inc as any).sentence ?? "—"}</td>
                   </tr>
                 );
               })}
@@ -282,23 +282,23 @@ function EvidenceTracker({ incidents }: { incidents: Incident[] }) {
           <Video size={22} style={{ color: ACCENT_INK }} />
         </div>
         <div>
-          <div className="text-[22px] font-semibold tabular-nums text-[#061A3A]">
-            {withVideo} <span className="text-[14px] text-[#44536B] font-normal">of {total}</span>
+          <div className="text-[22px] font-semibold tabular-nums text-[#1D1D1F]">
+            {withVideo} <span className="text-[14px] text-[#6E6E73] font-normal">of {total}</span>
           </div>
-          <div className="text-[11px] text-[#222222]">incidents have video/dashcam evidence</div>
+          <div className="text-[11px] text-[#1D1D1F]">incidents have video/dashcam evidence</div>
         </div>
         <div className="ml-auto text-right">
           <div className="text-[26px] font-semibold tabular-nums" style={{ color: ACCENT_INK }}>{pct}%</div>
-          <div className="text-[9px] text-[#44536B]">coverage rate</div>
+          <div className="text-[9px] text-[#6E6E73]">coverage rate</div>
         </div>
       </div>
-      <div className="h-2 rounded-full bg-[#D6F0F3] mb-4">
+      <div className="h-2 rounded-full bg-[#E8E8ED] mb-4">
         <div className="h-full rounded-full transition-all" style={{ width: `${pct}%`, background: ACCENT, opacity: 0.8 }} />
       </div>
-      <div className="flex items-start gap-2.5 px-3 py-2.5 rounded-md border border-[#C7EEF4] bg-[#EFF7F8]/30">
+      <div className="flex items-start gap-2.5 px-3 py-2.5 rounded-md border border-[#D2D2D7] bg-[#F5F5F7]/30">
         <FileText size={12} style={{ color: ACCENT_INK }} className="mt-0.5 shrink-0" />
-        <p className="text-[10px] text-[#222222] leading-relaxed">
-          <span className="font-medium text-[#061A3A]">Seattle Rideshare Drivers Association</span> advocates for mandatory dashcams in all app-based vehicles to improve evidence collection and driver safety.
+        <p className="text-[10px] text-[#1D1D1F] leading-relaxed">
+          <span className="font-medium text-[#1D1D1F]">Seattle Rideshare Drivers Association</span> advocates for mandatory dashcams in all app-based vehicles to improve evidence collection and driver safety.
         </p>
       </div>
     </SectionCard>
@@ -330,7 +330,7 @@ export default function AnalyticsPage() {
           {loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {Array(4).fill(0).map((_, i) => (
-                <div key={i} className="bg-[#FFFFFF] border border-[#C7EEF4] rounded-md p-4 h-60">
+                <div key={i} className="bg-[#FFFFFF] border border-[#D2D2D7] rounded-md p-4 h-60">
                   <Skeleton className="h-4 w-40 mb-3" />
                   <Skeleton className="h-40 w-full" />
                 </div>
@@ -354,7 +354,7 @@ export default function AnalyticsPage() {
             </>
           )}
 
-          <div className="text-[9px] text-[#44536B] pb-2">
+          <div className="text-[9px] text-[#6E6E73] pb-2">
             bullecloud.com · Analytics data derived from verified incident database
           </div>
         </main>
