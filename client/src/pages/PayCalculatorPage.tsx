@@ -13,14 +13,14 @@ const RATE_SETS = {
     perMin: 0.47,
     perMile: 0.80,
     perOffer: 5.34,
-    cite: "SMC 8.37 (effective Jan 1, 2026)",
+    cite: "SMC 8.37 (2026 rates, effective Jan 1, 2026)",
   },
   wa: {
-    label: "WA Statewide",
-    perMin: 0.39,
-    perMile: 1.34,
-    perTrip: 3.45,
-    cite: "RCW 49.46 TNP rates",
+    label: "WA (outside Seattle)",
+    perMin: 0.40,
+    perMile: 1.38,
+    perTrip: 3.55,
+    cite: "RCW 49.46.300 (2026 rates, trips outside Seattle)",
   },
 };
 
@@ -57,12 +57,12 @@ function PayCalculator() {
       minimum = Math.max(calculated, offerMin);
       breakdown = `(${h.toFixed(1)} hrs × 60 × $0.47) + (${m.toFixed(1)} mi × $0.80) = $${calculated.toFixed(2)} — or ${t} offers × $5.34 = $${offerMin.toFixed(2)} (whichever is greater)`;
     } else {
-      const timeBased = h * 60 * 0.39;
-      const distBased = m * 1.34;
-      const tripMin = t * 3.45;
+      const timeBased = h * 60 * 0.40;
+      const distBased = m * 1.38;
+      const tripMin = t * 3.55;
       const calculated = timeBased + distBased;
       minimum = Math.max(calculated, tripMin);
-      breakdown = `(${h.toFixed(1)} hrs × 60 × $0.39) + (${m.toFixed(1)} mi × $1.34) = $${calculated.toFixed(2)} — or ${t} trips × $3.45 = $${tripMin.toFixed(2)} (whichever is greater)`;
+      breakdown = `(${h.toFixed(1)} hrs × 60 × $0.40) + (${m.toFixed(1)} mi × $1.38) = $${calculated.toFixed(2)} — or ${t} trips × $3.55 = $${tripMin.toFixed(2)} (whichever is greater)`;
     }
 
     setResult({ minimum, actual: e, diff: e - minimum, breakdown });
@@ -101,19 +101,19 @@ function PayCalculator() {
       <div className="grid grid-cols-3 gap-2 mb-4 p-3 rounded-md bg-[#F5F5F7]/30 border border-[#D2D2D7]">
         <div className="text-center">
           <div className="text-[16px] font-semibold tabular-nums" style={{ color: ACCENT }}>
-            ${rateKey === "seattle" ? "0.47" : "0.39"}
+            ${rateKey === "seattle" ? "0.47" : "0.40"}
           </div>
           <div className="text-[9px] text-[#6E6E73]">per minute</div>
         </div>
         <div className="text-center border-x border-[#D2D2D7]">
           <div className="text-[16px] font-semibold tabular-nums" style={{ color: ACCENT }}>
-            ${rateKey === "seattle" ? "0.80" : "1.34"}
+            ${rateKey === "seattle" ? "0.80" : "1.38"}
           </div>
           <div className="text-[9px] text-[#6E6E73]">per mile</div>
         </div>
         <div className="text-center">
           <div className="text-[16px] font-semibold tabular-nums" style={{ color: ACCENT }}>
-            ${rateKey === "seattle" ? "5.34" : "3.45"}
+            ${rateKey === "seattle" ? "5.34" : "3.55"}
           </div>
           <div className="text-[9px] text-[#6E6E73]">{rateKey === "seattle" ? "per offer min." : "per trip min."}</div>
         </div>

@@ -56,16 +56,19 @@ export default function ResourcesPage() {
             <SectionCard icon={Shield} title="Washington State Protections">
               <div className="text-[10px] font-semibold text-[#1D1D1F] mb-1">HB 2076 (signed March 2022)</div>
               <BulletItem>Minimum per-trip payments, paid sick leave, workers' compensation for rideshare drivers statewide</BulletItem>
-              <BulletItem>WA rates outside Seattle: <span className="text-[#1D1D1F] font-medium">$0.39/min · $1.34/mile · $3.45 minimum per trip</span></BulletItem>
+              <BulletItem>2026 rates for trips outside Seattle: <span className="text-[#1D1D1F] font-medium">$0.40/min · $1.38/mile · $3.55 minimum per trip</span></BulletItem>
+              <BulletItem>2026 rates for trips starting in Seattle: <span className="text-[#1D1D1F] font-medium">$0.70/min · $1.63/mile · $6.12 minimum per trip</span> (rates adjust annually each Jan 1)</BulletItem>
               <BulletItem>Workers' compensation coverage since <span className="text-[#1D1D1F] font-medium">Jan 1, 2023</span></BulletItem>
               <BulletItem>Paid sick leave: <span className="text-[#1D1D1F] font-medium">1 hour per 40 hours worked</span></BulletItem>
               <BulletItem>Deactivation appeal rights with just-cause standard</BulletItem>
               <BulletItem>Anti-retaliation protections</BulletItem>
               <div className="pt-1 text-[9px] text-[#6E6E73]">
                 Sources:{" "}
-                <ExtLink href="https://ogletree.com/insights/washington-state-rideshare-law/">ogletree.com</ExtLink>
+                <ExtLink href="https://lni.wa.gov/workers-rights/industry-specific-requirements/transportation-network-company-drivers-rights/getting-paid">lni.wa.gov</ExtLink>
                 {" · "}
-                <ExtLink href="https://www.jacksonlewis.com/insights/washington-enacts-new-app-based-rideshare-driver-protections">jacksonlewis.com</ExtLink>
+                <ExtLink href="https://ogletree.com/insights-resources/blog-posts/washingtons-new-law-presents-sweeping-changes-to-gig-economy/">ogletree.com</ExtLink>
+                {" · "}
+                <ExtLink href="https://www.jacksonlewis.com/insights/new-washington-labor-protections-rideshare-drivers">jacksonlewis.com</ExtLink>
               </div>
             </SectionCard>
 
@@ -85,9 +88,9 @@ export default function ResourcesPage() {
                 Sources:{" "}
                 <ExtLink href="https://www.nelp.org/research/empowering-app-based-workers-act/">nelp.org</ExtLink>
                 {" · "}
-                <ExtLink href="https://www.hrw.org/news/2025/07/empowering-app-based-workers-act">hrw.org</ExtLink>
+                <ExtLink href="https://www.hrw.org/news/2025/07/29/new-bill-could-curb-exploitation-of-us-gig-workers">hrw.org</ExtLink>
                 {" · "}
-                <ExtLink href="https://omar.house.gov/media/press-releases/empowering-app-based-workers-act">omar.house.gov</ExtLink>
+                <ExtLink href="https://omar.house.gov/media/press-releases/omar-jayapal-norcross-introduce-legislation-protect-app-based-workers">omar.house.gov</ExtLink>
               </div>
             </SectionCard>
 
@@ -156,13 +159,13 @@ export default function ResourcesPage() {
                     stat: "Every 8 min",
                     desc: "A sexual assault report was filed against Uber from 2017–2022 on average",
                     source: "NYT / Fox News",
-                    sourceUrl: "https://www.nytimes.com",
+                    sourceUrl: "https://www.nytimes.com/2025/08/06/business/uber-sexual-assault.html",
                   },
                   {
-                    stat: "Feb 2026",
-                    desc: "Uber announced policy changes to ban violent felons regardless of conviction age",
-                    source: "Uber Policy Update",
-                    sourceUrl: "https://www.uber.com",
+                    stat: "June 2026",
+                    desc: "Uber announced stricter background checks, permanently banning drivers with violent felony convictions regardless of conviction age",
+                    source: "NYT / Uber Policy Update",
+                    sourceUrl: "https://www.nytimes.com/2026/06/26/business/uber-background-checks.html",
                   },
                 ].map(({ stat, desc, source, sourceUrl }) => (
                   <div key={stat} className="bg-[#FFFFFF] rounded-md p-3 flex gap-3 items-start">
@@ -181,7 +184,7 @@ export default function ResourcesPage() {
           </div>
 
           <div className="text-[9px] text-[#6E6E73] pb-2">
-            Sources: NELP (nelp.org) · HRW (hrw.org) · Ogletree (ogletree.com) · Jackson Lewis (jacksonlewis.com) · omar.house.gov · drivers-united.org · workplacefairness.org. bullecloud.com
+            Sources: NELP (nelp.org) · HRW (hrw.org) · Ogletree (ogletree.com) · Jackson Lewis (jacksonlewis.com) · L&I (lni.wa.gov) · omar.house.gov · drivers-united.org · workplacefairness.org. bullecloud.com
           </div>
         </main>
     </Layout>
